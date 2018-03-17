@@ -84,13 +84,12 @@ public class FrameCreacion extends javax.swing.JFrame {
                             .addComponent(jLabel3)
                             .addComponent(jLabel4))
                         .addGap(33, 33, 33)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(tf_vtransferencia, javax.swing.GroupLayout.DEFAULT_SIZE, 148, Short.MAX_VALUE)
-                            .addComponent(tf_vrecepcion)
-                            .addComponent(tf_nombre)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(144, 144, 144)
-                        .addComponent(bt_agregarLAN)))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(bt_agregarLAN)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(tf_vtransferencia, javax.swing.GroupLayout.DEFAULT_SIZE, 148, Short.MAX_VALUE)
+                                .addComponent(tf_vrecepcion)
+                                .addComponent(tf_nombre)))))
                 .addContainerGap(154, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -194,13 +193,23 @@ public class FrameCreacion extends javax.swing.JFrame {
     }//GEN-LAST:event_tf_nombreMouseClicked
 
     private void bt_agregarLANMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_agregarLANMouseClicked
-        S1 si = new S1();
-        S2 s2 = new S2();
 
         if (tf_nombre.getText().equalsIgnoreCase("S1")) {
-            si.setVisible(true);
-        } else if (tf_nombre.getText().equalsIgnoreCase("S2")){
-            s2.setVisible(true);
+            Switch sw = new Switch(tf_nombre.getText(), Integer.parseInt(tf_vtransferencia.getText()), Integer.parseInt(tf_vrecepcion.getText()), new Router(), new S1());
+            sw.setR(new Router(null, null, sw, null, 0, 0));
+          
+             
+            
+        } else if (tf_nombre.getText().equalsIgnoreCase("S2")) {
+            Switch sw = new Switch(tf_nombre.getText(), Integer.parseInt(tf_vtransferencia.getText()), Integer.parseInt(tf_vrecepcion.getText()), new Router(), new S2());
+            sw.setR(new Router(null, null, sw, null, 0, 0));
+            
+           
+              
+            
+            
+            
+
         }
 
 
@@ -259,4 +268,6 @@ public class FrameCreacion extends javax.swing.JFrame {
     public javax.swing.JTextField tf_vrecepcion;
     public javax.swing.JTextField tf_vtransferencia;
     // End of variables declaration//GEN-END:variables
+
+    
 }
